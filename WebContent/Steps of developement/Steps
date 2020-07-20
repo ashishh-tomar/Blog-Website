@@ -1,0 +1,375 @@
+Behind the Scenes of TechBlog
+--------------------------------------------
+
+1.First we just setup the project 
+		We created pacakges: 
+						
+		1.helper	(for classes to perform util functions like getConnecton)
+		2.entities	(To creae object of the users and various method to perform some object related tasks)
+		3.dao		(to perform database operation we need classes)
+		4.servlets	(For servlets )
+		
+--------------------------------------------
+2. 
+
+	->We created a database techblog in mysql
+	
+	->We created  ConnectionProvider class in helper package which help in getting connection without inputing
+		url,user,pas everytime when we need connection  
+
+---------------------------------------------
+
+3. We design index page of our project using Bootstrap4
+
+		->index.jsp  (HomePage)
+				1.We created navbar and put in other file "navbar.jsp" bcz we neew navbar in every page to we just have to include it wherever we want using <%@ include file=""> directive	
+				2.We cretaed jumbotorn to give some information in front page
+				3.We created cards of col 4 na d2 rows and we also do clipping in the jumbotron background
+				
+		->Login.jsp (to login user)
+				1.we create a card and inside card-body we put a form
+				2.we include navbar
+				3.we link home page with index.jsp
+				4.we add a login section in the navbar
+				
+				
+		->Register.jsp (for register user)
+				1.We link the register page with "free trial"
+				2.we created a signup in the navbar nd link it with register.jsp
+				3.we use card and inside it we create a form with more fields
+				4.we included navbar int the register.jsp by include directive
+				
+--------------------------------------------------
+
+4.
+		-> we created a table techblog with id,name,email,password,gender,about
+		
+		->We created a User class in entity package and hv 2 contrictor and getter and setter method to set and get properties of object or content of object
+		
+		
+		->We created a UserDao class which insert value in database which has a method saveUser with parametre of User type and fetch data from user and insert in db;
+		
+		
+		->We created a register servlet which fetch data from form and then we create User object to set data and then created
+				UserDao object and pass Connection object from getConncetion and then call dao.saveUSer(User user) by passing user object and
+					it return boolean after success and we use this boolen vakuse in if else .
+		
+		
+		->After success we hav to pop up some msg we use Sweet Alert an copy its cdn and paste it in the last inside script tag 
+			(it did not work cause i dont knw ajax so leave it just forward the servlet to login.jsp else to register.jsp)
+			
+			
+			
+---------------------------------------------------------------------------
+5. 
+
+	->We just design the Error Page
+	->Login page functionality,we declare a method"getUser" in user dao which take two param email and pass and return complete user to login
+	
+	
+	->We created a new column profile in database to show pic
+	
+	->We created Login Servlet to fetch Data from form na and check  by using "getUser"
+		method is there any user or not.if there is user we redirect ot profile page na use HttpSession
+		for current user.
+		
+		
+		
+		
+		--------Stuck in a big problem i just aaded the new column profile and not giving any value to isert in it bcz of this my form
+					does not perfotm any action and just refresh on the same page .
+-----------------------------------------------------------------------------------
+6.
+ 	
+ 	->we make a notification on login form if user is not found that invalid user
+ 	
+ 	->We created a class Mesage to show notification with some mssge nd colr type 
+ 	->now we design profile page
+ 	->we add logout section and user Setion in navbar right side
+ 	->We make logout servlet for logout and kill sesssion of current user nad get user to login page.
+		
+	
+	
+-------------------------------------------------------------------------------------
+7.
+
+	->We just use modal from bootstrap 4 and understand button working how it pop up and 
+		copy that function with small change i.e errorModal change to profile-modal
+		and link it with tha navbar user section.
+		
+	->To show profile img we use image tag in profile.jsp
+		and we just set profile variable with defaut link in Register servlet and add extra parametr
+			profile in constructor of user.and to get the link in img src tag we use jsp directive user.getProfile which containa
+			the link of the img .If user want to change he or she can invoke method user,setProfile() to set the new link for paricular profile.
+			
+			
+--------------------------------------------------------------------------------------
+
+8 
+	
+	user can edit his/her profile	
+	
+	->in profile.jsp page we just put table inside a div with id="profile detail"
+		and under table we create another div "profile edit" so that we can apply jquery
+		to make fielad editable when user click on edit button
+		
+	->We just hide the edit section by applying inline style.Now we do script in the last line of body
+	
+	->we give id to edit buttn
+	
+	-> we added on click listener.When user click btn it hide the detail table and show edit section.
+	
+	->We we have to toggle which means if we again click on edit btn it again show the detail tabel.
+	
+	->now i make e form which take changed value .i prefer to change name,about,gender,etc.
+	
+	
+---------------------------------------------------------------------------------------
+
+9
+
+	->Now we are making EditServlet to do backend Process.
+	
+	->in form we have to mention enctype bcz we r taking img in form also.
+	
+	->Now we have to fetch data from form just be careful in image section
+	
+	->Now we get curent User by session nad get curret uSer and set the new Values.
+	
+	->Now we create new Method "updateUser" in userDao to update database.
+	
+	->now We created prepared statement and data querry data;
+	
+	->We have to write multipart annotation just above EditServlet bcz our data from form is img type also
+	
+	->We get error in image cause its not updated bcz server cant fint the url of image
+----------------------------------------------------------------------------------------
+
+10  
+    now we set Profile
+    
+    ->We hav to get image in the pic folder
+    
+    ->We make a static  function int he helper package class="Helper" "deleteFile(Path)" to delete old pic
+    
+    ->and make static saveFile(Input Stream,path) Function to save file in our directory
+    
+    ->in editServlet we have to find the path of our image in the if else case which is predefied
+    
+    
+    //I got in big trouble i cant change my dp cause its not giving proper path just it giving only file name
+    
+    for temporary purpose u have to put manually file in the "pics" folder then selected file is put as dp;
+    
+    not working so leave it;
+    
+-------------------------------------------------------------------------------------
+    
+ 11  
+ 		Delete old profile pic and update pic
+ 		
+ ---------------------------------------------------------------------------------------
+
+12    (Blog Section)
+
+
+	->We created two tables - categories with primary key cid & post with foreign key cid using work bench.
+	
+---------------------------------------------------------------------------------------------
+13
+
+		->now we create two classes in entities to represent our table categores and post
+		
+		
+		->We added a section in navbar "post" and now we have to link this html text with the navbar section
+			when it clik modal must popup.
+			
+		->we just add some categores and description in the categories table and now we hae to show it in the form
+		
+		->Now we create a class inside UserDao package named as PostDao
+		
+		->now we cretaed a method with return type of Array list which holds categoreis
+
+		->We use array list to store category so first create object of it (i missed it but then i understand).
+		
+-----------------------------------------------------------------------------------------------
+
+14
+
+	Add blog using AJAZ bcz it makes asynchronous page that means page not refresh evrytime.
+	
+	
+	->We give id to form and fields to fetch data in servlet
+	
+	->Now we apply javascript
+	
+	->I cant able to run ajax method i dont knw why cause console.log() not showing anything
+	
+	->I created a Post Servlet to fetch data
+	
+	->in database we add a new coulm userId in Post table and make it foreign key with user table-uId
+	
+	->We make Post object with suitable parametr.
+	
+	->We created a method savePost to store Data to database in postDao 
+	
+	
+	->Again i cant able to fetch file from the database .
+--------------------------------------------------------------------------------------------------
+15.
+
+	Sweet alert when you succesfully submitted post details in database (img still not working)
+	
+	->It didnt work
+	
+	
+----------------------------------------------------------------------------------------------------
+	
+16.
+	
+	How to displya blog on our screen(format is important)
+	
+	
+	->	We divide page in two parts
+	
+	->We use getCategories Function to make a list of categories
+	
+---------------------------------------------------------------------------------------------------
+17.
+
+	Heart of our project
+	
+	->Showing posts according to categories
+	
+	->We cretae 2 function in dao  1.getAllPosts()   2.getPostByCatId(int catId)
+	
+	-.We added a refresh sign 
+	->now we create a jsp loadPost
+	->We created a ajax script in which if we refresh our refresh sign get hidden
+		and we can show posts now.
+		
+-----------------------------------------------------------------------------------------------------
+
+18.Now We have to work on loadPost.jsp to show post
+
+	->We use card to show our post but still i fail in getting pic
+
+		
+--------------------------------------------------------------------------------------------------------
+
+19.
+ Working with blog Categories
+ 
+ ->We did functionaly in profile.jsp last ajax script and pass cid as data.
+ ->in loadPost we fetch this cId and fetch post from db according todatabase.
+ 
+ --------------------------------------------------------------------------------------------------------
+ 20. 	Now we hav to show active state on categories list when we select it
+ 
+ 
+ 	->We add a new variable to getPost mthod of ajax to by"this" keyword.
+ 	
+ 	
+ ---------------------------------------------------------------------------------------------------------------
+ 21. 
+ 	
+ 	
+ 		Working with Single Post
+ 		
+ 		->We add crad footer for read more purpose which refer to a modal for further information
+ 		
+ 		->We added 3 button on our post
+ 		
+ 		->We created a jsp page "showBlog" which link to read more.. and we have to send post id with it
+ 			using url rewriting
+ 			
+-----------------------------------------------------------------------------------------------------------------------
+
+22.
+
+		We we do validation of user in the profile.jsp top part is user validation
+		we copy it and paste it in showBlog.jsp and if user is not validate then it forward to error page
+		
+		->now we make a function in dao in which it take post id "getPostByPostId" and give compelet informtion
+		
+		->We just use our navbar and all till script of load post and import sttaement also
+		from profile.jsp int showBLog.jsp
+		
+		->We just format the post card na dfetch information with post object
+		
+		->We link home button on navbar with profile.jsp
+		
+------------------------------------------------------------------------------------------------------------------------
+
+23.
+
+
+	We just giving name to post title and may post parts to apply css 
+	
+	->We only have to apply css for this page only so we apply css in head section
+		
+	->We just make a row between image and content to show user name and time
+	
+-----------------------------------------------------------------------------------------------------------------------
+24.
+	Now we have to fetch name dynamically to show in our post
+	
+	->We change background for our website  for this we downloaded an image and paste it in image folder.
+	
+	->We only need background image for showBlog.jsp ,login ,register and profile.jsp so we only appy css in head section;
+	
+	->We created a function " getUserByUserId(int postId)" in user Dao to get info using post Id which we can ftech from post Object
+	
+------------------------------------------------------------------------------------------------------------------------
+
+25.
+
+	Creating Like System(Next Module)
+	
+	->We create a like table in mysql (lId,pId,uId) with foreign key pid and uid
+	
+-------------------------------------------------------------------------------------------------------------------------
+26.
+
+	We make dao classes for like system
+	
+	->We make a class LikeDao with method insertLike(),countLikeOnPost(),isLikedByUser() and deleteLike(int pid,int uid)
+	
+----------------------------------------------------------------------------------------------------------
+27.
+
+		We make javascript file to work on our website
+		
+		->link js with like button
+		->we perform some ajax and send some data throug it to "likedServlet"
+			TO perform db operation using LikeDao.clss
+			
+------------------------------------------------------------------------------------------------------------------
+28.
+
+	We have to add count on like on front end
+	
+-----------------------------------------------------------------------------------------------------------------
+29.
+
+	Facebook Comment plugin
+	No need for mysql it save online....
+-----------------------------------------------------------------------------------------------------------------
+
+	
+	I solved my problem of changing dp how??
+	
+	Ans:i mistakenly write response.getRealPath in place of request.getRealath
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
