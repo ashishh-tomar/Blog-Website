@@ -35,22 +35,33 @@ public class Register extends HttpServlet {
 		
 		
 	
-		User user=new User(name,email,password,gender,about);
+		String sql="insert into user(name,email,password,gender,about) values(?,?,?,?,?)";
 		
-		
-		UserDao dao=new UserDao(ConnectionProvider.getConnection());
-		
-		boolean flag=dao.saveUser(user);
-		if(flag==true)
-		{
-			RequestDispatcher r=request.getRequestDispatcher("login.jsp");
-			r.forward(request, response);
+		try {
+				Connection con=ConnectionProvider.getConnection();
+				PreparedStatement pst=con.prepareStatement(sql);
+				pst.setString(1,name);
+				pst.setString(2,email);
+				pst.setString(3,password);
+				pst.setString(4,gender);
+				pst.setString(5,about);
+				int i=pst.executeUpdate();
+				if(i!=0)
+					{
+					RequestDispatcher r=request.getRequestDispatcher("login.jsp");
+					r.forward(request, response);
+					}
+				else
+				{
+					//response.getWriter().println("data is not stored in database");
+					response.sendRedirect("register.jsp");
+				}
 		}
-		else
+		catch(Exception e)
 		{
-			response.getWriter().println("data is not stored in database");
-			//response.sendRedirect("register.jsp");
+			e.printStackTrace();
 		}
+		
 			
 			
 		}

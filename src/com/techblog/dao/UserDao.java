@@ -13,29 +13,7 @@ public class UserDao {
 	}
 	
 	
-	public boolean saveUser(User user)
-	{
-		boolean flag=false;
-		try {
-			
-			String sql="insert into user values(?,?,?,?,?)";
-			PreparedStatement pst=con.prepareStatement(sql);
-			pst.setString(1,user.getName());
-			pst.setString(2,user.getEmail());
-			pst.setString(3,user.getPassword());
-			pst.setString(4,user.getGender());
-			pst.setString(5,user.getAbout());
-			
-			
-			pst.executeUpdate();
-			flag=true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return flag;
-	}
+	
 	
 	public User getUser(String email,String password)
 	{
