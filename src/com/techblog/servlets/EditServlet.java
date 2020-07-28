@@ -23,7 +23,7 @@ import com.techblog.helper.Helper;
 @MultipartConfig
 public class EditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    	private static final String SAVE_DIR="img";//This is our folder name
+    	private static final String SAVE_DIR="pics";//This is our folder name
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
