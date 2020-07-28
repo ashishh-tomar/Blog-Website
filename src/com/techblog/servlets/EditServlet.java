@@ -23,7 +23,8 @@ import com.techblog.helper.Helper;
 @MultipartConfig
 public class EditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+    	private static final String SAVE_DIR="img";//This is our folder name
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
@@ -58,20 +59,15 @@ public class EditServlet extends HttpServlet {
 		{
 			
 			
-			@SuppressWarnings("deprecation")
-			String path=request.getRealPath("/")+"pics"+File.separator+user.getProfile();
-			
+			//String fileName=part.getSubmittedFileName();
+			String savePath="E:\\Apache Software Foundation\\Tomcat 9.0\\wtpwebapps\\TechBlog"+File.separator+SAVE_DIR;
+			File f=new File(savePath,image);
+			if(f.exists()==false)
+			{
+				f.createNewFile();
+			} 
+			response.sendRedirect("profile.jsp");
 			    
-			    
-				if(Helper.saveFile(part.getInputStream(), path))
-				{
-					response.getWriter().println("Updated ");
-					response.sendRedirect("profile.jsp");
-				}
-				else
-				{
-					
-				}
 			
 		}
 		
