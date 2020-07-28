@@ -143,6 +143,176 @@
 
 
 </div>
+<!-- Carosoule start -->
+<div class="container">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="img/author-blog-create-creative-267569.jpg" alt="First slide" style="height: 600px;">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/photo-of-women-using-laptops-3178744.jpg" alt="Second slide" style="height: 600px;">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img/beach-beautiful-blue-child-267403.jpg" alt="Third slide" style="height:600px;">
+    
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+</div>
+
+<!-- Carosuoule End  -->
+
+<main>
+	<div class="container">
+	<!-- Cards Start -->
+		
+		<div class="row mb-4 mt-5">
+		<div class="col-md-4">
+			<div class="card" style="width: 25rem;border:none">
+  				
+  				
+  					
+  				<div class="card-body">
+  					<b><span class="fa fa-bars"></span>  Blogging Helps in Shaping Career</b>
+  					<p>Blogging, apart from being a great productive hobby, can be a good source of earning as well. It is noted that many articles try to make it look really easy – the truth is different; blogging is not really an easy way into an earning career..</p>
+    		
+    		</div>
+			</div>
+		
+		</div>
+		<div class="col-md-4">
+			<div class="card " style="width: 25rem;border:none">
+  				
+  				<div class="card-body">
+  					<b><span class="fa fa-line-chart"></span>  Blog Introduces To High Profile Recruiters</b>
+  					<p>Recruitment refers to the overall process of identifying, attracting, screening, shortlisting, and interviewing, suitable candidates for jobs within an organization. Recruitment can also refer to processes involved in choosing individuals for unpaid roles..</p>
+    		
+    		</div>
+			</div>
+		
+		</div>
+		<div class="col-md-4">
+			<div class="card " style="width: 25rem;border:none">
+  				
+  				<div class="card-body">
+  					<b><span class="fa fa-tachometer"></span>  Speed Is Your Friend</b>
+  					<p>An internet relationship is a relationship between people who have met online, and in many cases know each other only via the Internet</p>
+    		
+    		</div>
+			</div>
+		
+		</div>
+	
+	</div>
+	
+	
+	
+	
+	<div class="row mb-4">
+		<div class="col-md-4">
+			<div class="card " style="width: 25rem;border:none">
+  				
+  				<div class="card-body">
+  					<b><span class="fa fa-star-o"></span>  Networking through Comments</b>
+  					<p>Social networking is the use of Internet-based social media sites to stay connected with friends, family, colleagues, customers, or clients. Social networking can have a social purpose, a business purpose, or both, through sites such as Facebook, Twitter, LinkedIn, and Instagram, among others..</p>
+    		
+    		</div>
+			</div>
+		
+		</div>
+		<div class="col-md-4">
+			<div class="card" style="width: 25rem;border:none">
+  				
+  				<div class="card-body">
+  					<b><span class="fa fa-thumbs-o-up"></span>  Your Blog Design Matters</b>
+  					<p>Design Observer is a website devoted to a range of design topics including graphic design, social innovation, urbanism, popular culture, and criticism. The content of the site includes essays, articles, reviews, blog posts, and peer ... and the podcast Design Matters with Debbie Millman..</p>
+    		
+    		</div>
+			</div>
+		
+		</div>
+		<div class="col-md-4">
+			<div class="card" style="width: 25rem;border:none;">
+  				
+  				<div class="card-body">
+  					<b><span class="fa fa-file-word-o"></span>  Think of Content Strategically</b>
+  					<p>Content strategy focuses on the planning, creation, delivery, and governance of content. ... Ensuring that you have useful and usable content, that is well structured, and easily found is vital to improving the user experience of a website.</p>
+    		
+    		</div>
+			</div>
+		
+		</div>
+	
+	</div>
+		
+		<!-- Cards End -->	
+		
+</div>
+</main>
+<!-- Quotes Section Start -->
+
+<div class="container-fluid">
+<div class="jumbotron" style="background:white;">
+	<span class="fa fa-quote-left fa-2x " style="margin-left: 20%;"></span>
+	<div class="text-center">
+	<p>I think most of the important stuff on the Internet has been built. There will be continued innovation,</p><p> for sure, but the great problems of the Internet have essentially been solved.
+
+	</p>
+	</div>
+	<span class="fa fa-quote-right fa-2x " style="margin-left: 80%;"></span>
+	<div class="text-center">
+	<b>Elon Musk</b>
+	</div>
+	
+	
+
+</div>
+</div>
+
+<!-- Quotes section End -->
+<!-- Footer -->
+
+
+<div class="footer">
+
+	<div class="jumbotron primary-background text-center" style="height: 200px;">
+		<p>Copyright &copy; 2018,web company All rights reserved</p>
+			<div>
+				<a href="#">Terms of use</a> | <a href="#">Privacy Policy</a> 
+				<br>
+				<p>Have a Good Day</p>
+				<span class="fa fa-facebook"></span>       <span class="fa fa-google-plus"></span>     <span class="fa fa-linkedin-square"></span>
+			
+			
+			</div>
+			
+		
+		</div>
+	</div>
+
+
+
+</div>
+
+<!-- End of website -->
+
+
+
 
 
 
