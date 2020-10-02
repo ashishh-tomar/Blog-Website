@@ -1,6 +1,8 @@
 package com.techblog.servlets;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,9 +34,6 @@ public class Register extends HttpServlet {
 		String password=request.getParameter("password");
 		String gender=request.getParameter("gender");
 		String about=request.getParameter("about");
-		
-		
-	
 		String sql="insert into user(name,email,password,gender,about) values(?,?,?,?,?)";
 		
 		try {
@@ -61,6 +60,9 @@ public class Register extends HttpServlet {
 		{
 			e.printStackTrace();
 		}
+		
+		
+		
 		
 			
 			

@@ -1,7 +1,9 @@
 package com.techblog.servlets;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -63,10 +65,34 @@ public class PostServlet extends HttpServlet {
 		if(dao.savePost(post))
 		{
 			
-			String path=request.getRealPath("/")+"Blog_pics"+File.separator+part.getSubmittedFileName();
-			Helper.saveFile(part.getInputStream(), path);
-			response.sendRedirect("profile.jsp");
+		//	String path=request.getRealPath("/")+"Blog_pics"+File.separator+part.getSubmittedFileName();
+		//	Helper.saveFile(part.getInputStream(), path);
+			
 
+			String path="C:"+File.separator+"Users"+File.separator+"Ashish"+File.separator+"eclipse-workspace"+File.separator+"TechBlog"+File.separator+"WebContent"+File.separator+"Blog_pics"+File.separator+part.getSubmittedFileName();
+			System.out.println(path);
+			//Now we are writing imge using file i/o in particular folder
+			try {
+			FileOutputStream fos=new FileOutputStream(path);
+			
+			
+			InputStream is=part.getInputStream();
+			
+			//Reading data
+			
+			byte[] data=new byte[is.available()];
+			is.read(data);
+			
+			//Writing data
+			
+			fos.write(data);
+			fos.close();
+			response.sendRedirect("profile.jsp");
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
 			
 		}
 		else

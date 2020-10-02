@@ -41,6 +41,8 @@
 
 </div>
 
+
+
 <!-- Cards -->
 
 
@@ -143,6 +145,7 @@
 
 
 </div>
+
 <!-- Carosoule start -->
 <div class="container">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -290,7 +293,7 @@
 
 <div class="footer">
 
-	<div class="jumbotron primary-background text-center" style="height: 200px;">
+	<div class="jumbotron primary-background text-center mb-0" style="height: 200px;">
 		<p>Copyright &copy; 2018,web company All rights reserved</p>
 			<div>
 				<a href="#">Terms of use</a> | <a href="#">Privacy Policy</a> 
@@ -310,8 +313,6 @@
 </div>
 
 <!-- End of website -->
-
-
 
 
 

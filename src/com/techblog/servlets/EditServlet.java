@@ -1,7 +1,10 @@
 package com.techblog.servlets;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -23,8 +26,9 @@ import com.techblog.helper.Helper;
 @MultipartConfig
 public class EditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    	private static final String SAVE_DIR="pics";//This is our folder name
-
+	private static final String SAVE_DIR="img";//This is our folder name
+	  
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
@@ -60,14 +64,42 @@ public class EditServlet extends HttpServlet {
 			
 			
 			//String fileName=part.getSubmittedFileName();
-			String savePath="E:\\Apache Software Foundation\\Tomcat 9.0\\wtpwebapps\\TechBlog"+File.separator+SAVE_DIR;
-			File f=new File(savePath,image);
-			if(f.exists()==false)
+		//	String savePath="E:\\Apache Software Foundation\\Tomcat 9.0\\wtpwebapps\\TechBlog"+File.separator+SAVE_DIR;
+		//	File f=new File(savePath,image);
+		//	if(f.exists()==false)
+		//	{
+		//		f.createNewFile();
+		//	} 
+			
+			
+			String path="C:"+File.separator+"Users"+File.separator+"Ashish"+File.separator+"eclipse-workspace"+File.separator+"TechBlog"+File.separator+"WebContent"+File.separator+"pics"+File.separator+part.getSubmittedFileName();
+			System.out.println(path);
+			//Now we are writing imge using file i/o in particular folder
+			try {
+			FileOutputStream fos=new FileOutputStream(path);
+			
+			
+			InputStream is=part.getInputStream();
+			
+			//Reading data
+			
+			byte[] data=new byte[is.available()];
+			is.read(data);
+			
+			//Writing data
+			
+			fos.write(data);
+			fos.close();
+			}
+			catch(Exception e)
 			{
-				f.createNewFile();
-			} 
+				e.printStackTrace();
+			}
+			
+			
 			response.sendRedirect("profile.jsp");
 			    
+				
 			
 		}
 		
